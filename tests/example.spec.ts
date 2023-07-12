@@ -16,3 +16,10 @@ test('get started link', async ({ page }) => {
   // Expects the URL to contain intro.
   await expect(page).toHaveURL(/.*intro/);
 });
+
+
+test('Verify page loaded VQA', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+  await page.locator('a', {hasText: "Node.js"}).first().hover()
+  await expect(page).toHaveScreenshot();
+});

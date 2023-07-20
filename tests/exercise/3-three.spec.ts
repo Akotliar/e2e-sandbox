@@ -16,7 +16,7 @@ test.describe('Products page', () => {
      Criteria: When a user visits the https://www.ikea.com/ website and then navigates to a products page 
      (i.e outdoor furniture). On the product page the user should be able to add a furniture item to a shopping list.
   */
-  test.only('is product item added to shopping list', async ({ page }) => {
+  test('is product item added to shopping list', async ({ page }) => {
     //setup steps
     // 1. navigate to a products page
     // 2. add a product to shopping list

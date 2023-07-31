@@ -28,7 +28,10 @@ note:  there are various locations an item can be added. you can decide which fl
 ## Exercise #7
 **Criteria:** As a https://www.razer.com/ online store customer I would like to add an Exclusive product to my shopping cart and change the quantity of the item in my cart and verify that the price is updated accordingly.
 
-note:  an EXCLUSIVE item has an orange tag on the product image as seen in the image attached.
+note: an EXCLUSIVE item has an orange tag on the product image as seen in the image attached.
+
+![Alt image of label for EXCLUSIVE product](assets/Screenshot%202023-07-24%20at%2011.07.28%20AM.png)
+
 
 ## Exercise #7a
 **Criteria:** When a user is reviewing their cart items in the https://www.razer.com/ online store and then switches tabs the messaging in the tab is changed to something like  "Going AFK?...". verify that the messaging change occurs in the tab.

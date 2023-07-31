@@ -2,7 +2,7 @@
 Practice automation testing techniques and features.
 \
 \
-:warning: **Important Note**: The information provided here is for educational purposes only. Examples may become outdate overtime.
+:warning: **Important Note**: The information provided here is for educational purposes only. Examples may become outdated overtime.
 
 # Exercise Details
 

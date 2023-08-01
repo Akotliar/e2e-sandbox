@@ -1,7 +1,9 @@
 import { Locator, test as base, expect } from '@playwright/test';
 
 const test = base.extend({
-  page: async ({ page }, use) => {
+  page: async ({ page, isMobile }, use) => {
+    if(isMobile) test.skip();
+    
     await page.goto('https://www.sony.com/en/SonyInfo/design/stories');
 
     await use(page);

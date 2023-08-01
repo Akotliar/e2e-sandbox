@@ -7,7 +7,7 @@ test.describe('', () => {
    the tab is changed to something like  "Going AFK?...". verify that the messaging change occurs in the tab.
 */
 
-  test('', async ({ page }) => {
+  test.skip('', async ({ page }) => {
     await page.goto("")
 
     //need to complete this,

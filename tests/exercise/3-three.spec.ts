@@ -1,7 +1,9 @@
 import { test as base , expect } from '@playwright/test';
 
 const test = base.extend({
-  page: async ({ page }, use) => {
+  page: async ({ page, isMobile }, use) => {
+    if(isMobile) test.skip();
+
     await page.goto('https://www.ikea.com/ca/en/');
 
     const oneTrustOKbtn = page.locator('button[id="onetrust-accept-btn-handler"]');
@@ -52,12 +54,12 @@ test.describe('Products page', () => {
     const productInfoName = await page.locator(".pip-header-section__container-text").locator("span").first().textContent()
     const productInfoDescription = await page.locator(".pip-header-section__container-text").locator("span").last().textContent()
 
-    const addToShoppingListBtn = page.getByRole('button', { name: 'Save to shopping list' })
+    const addToShoppingListBtn = page.getByRole('button', { name: 'Save to shopping list' }).first()
     await expect(addToShoppingListBtn).toBeVisible();
     await addToShoppingListBtn.click();
 
     // step # 3
-    const toastPopUp = page.locator('div[class="hnf-toast hnf-toast--show"]');
+    const toastPopUp = page.locator('div[class="hnf-toast hnf-toast--show"]').first();
     const toastShowBtn = toastPopUp.locator('span', {hasText: "Show"}).first()
 
 

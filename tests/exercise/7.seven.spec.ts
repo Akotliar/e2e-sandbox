@@ -9,7 +9,7 @@ test.describe('', () => {
   note:  an EXCLUSIVE item has an orange tag on the product image as seen in the image attached.
 */
 
-  test('', async ({ page }) => {
+  test.skip('', async ({ page }) => {
     await page.goto("")
 
     //need to complete this,

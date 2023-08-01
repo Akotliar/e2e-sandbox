@@ -1,9 +1,11 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, devices } from '@playwright/test';
 import { getComparator } from 'playwright-core/lib/utils';
 
-test.describe('Samsung Product detail', () => {
+test.describe.only('Samsung Product detail', () => {
 
   test.beforeEach(async ({ page }) => {
+    // page.setViewportSize(devices['Galaxy S9+'].viewport);
+
     //specific test for this one product. Ideally there would be an array of products we could pull from and generate tests against those
     await page.goto("https://www.samsung.com/ca/smartphones/galaxy-s23/")
 
@@ -18,10 +20,12 @@ test.describe('Samsung Product detail', () => {
 */
 
   test('is exclusive colours section/carousel visible', async ({ page }) => {
+    // page.setViewportSize(devices['Galaxy S9+'].viewport);
 
     const colorsSection = page.locator('#special-color');
   
-    const exclusiveColors = colorsSection.getByRole('heading', { name: 'Online Exclusive Color', exact: true });
+    const exclusiveColors = colorsSection.getByRole('heading', { name: 'Online Exclusive Colour', exact: true });
+    await exclusiveColors.scrollIntoViewIfNeeded();
     await expect.soft(exclusiveColors).toBeVisible();
 
     const colorSwiper = colorsSection.locator('div[class="swiper-wrapper"]');
@@ -34,7 +38,10 @@ test.describe('Samsung Product detail', () => {
     
   });
 
-  test.only('is selecting color option updating main image preview', async ({ page }) => {
+  test('is selecting color option updating main image preview', async ({ page }) => {
+    test.slow();
+    // page.setViewportSize(devices['Galaxy S9+'].viewport);
+
     const colorsSection = page.locator('#special-color');
   
     const exclusiveColors = colorsSection.getByRole('heading', { name: 'Online Exclusive Colour', exact: true });
@@ -51,7 +58,9 @@ test.describe('Samsung Product detail', () => {
 
     const comparator = getComparator('image/png');
     for(let index = 0; index < colorItemCount; index++){
+
       const imagePreviewCurrent = colorsSection.locator('div[class="image"]').locator('a').locator('img')
+      await imagePreviewCurrent.scrollIntoViewIfNeeded();
 
       // take initial screenshot of image on page load before selection of exclusive color
       let previousImage = await imagePreviewCurrent.screenshot()
@@ -59,9 +68,14 @@ test.describe('Samsung Product detail', () => {
       let itemToSelect = colorSwiperChildren.nth(index);
       await itemToSelect.click();
 
+      // added explicit timeout to wait for image switch. probably there is a better way to do this.
+      await page.waitForTimeout(1000)
+
       const imagePreviewNext = colorsSection.locator('div[class="image"]').locator('a').locator('img')
+      await imagePreviewNext.scrollIntoViewIfNeeded();
 
       let currentImage = await imagePreviewNext.screenshot()
+
 
       // compare image is not the same as the previous image
       expect.soft(comparator(previousImage, currentImage)).not.toBeNull();

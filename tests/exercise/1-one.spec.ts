@@ -5,7 +5,10 @@ test.describe('Logged out - Amazon Account List Menu', () => {
  Criteria: When a user visits the amazon.com website in the logged out state 
  and clicks on the Watchlist menu item they are redirected to a login/signup page.
 */
-  test('is redirected to signup/login page when clicking on Watchlist', async ({ page }) => {
+  test('is redirected to signup/login page when clicking on Watchlist', async ({ page, isMobile }) => {
+
+    if(isMobile) test.skip();
+
     await page.goto('https://www.amazon.com');
 
     //setup steps

@@ -1,7 +1,7 @@
 import { test, expect, devices } from '@playwright/test';
 import { getComparator } from 'playwright-core/lib/utils';
 
-test.describe.only('Samsung Product detail', () => {
+test.describe('Samsung Product detail', () => {
 
   test.beforeEach(async ({ page }) => {
     //specific test for this one product. Ideally there would be an array of products we could pull from and generate tests against those

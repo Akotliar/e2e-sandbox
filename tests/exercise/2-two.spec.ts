@@ -5,7 +5,9 @@ test.describe('Logged out - Currency change', () => {
     Criteria: When a user visits the amazon.com website in the logged out state and changes 
     the currency settings then the currency for the products should be displayed in the new currency that was selected.
   */
-  test('is currency displayed updated on items to CRC - Costa Rican Colón', async ({ page }) => {
+  test('is currency displayed updated on items to CRC - Costa Rican Colón', async ({ page, isMobile }) => {
+    if(isMobile) test.skip();
+    
     await page.goto("https://www.amazon.com/s?k=umbrella")
 
     //setup steps

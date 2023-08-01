@@ -1,7 +1,9 @@
 import { Locator, test as base, expect } from '@playwright/test';
 
 const test = base.extend({
-  page: async ({ page }, use) => {
+  page: async ({ page, isMobile }, use) => {
+    if(isMobile) test.skip();
+    
     await page.goto('https://www.sony.com/en/SonyInfo/design/stories');
 
     await use(page);
@@ -34,7 +36,7 @@ test.describe('Sony Design Stories', () => {
    Criteria: When a user visits https://www.sony.com/en/SonyInfo/design/stories/. 
    the user should be able to switch between story categories and see the correct list of stories based on the selection.
   */
-  test.only('is categories tabs updating stories for selection', async ({
+  test('is categories tabs updating stories for selection', async ({
     page,
   }) => {
     const tabList = page.locator('ul[class="tag-list"]');

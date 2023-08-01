@@ -9,7 +9,7 @@ test.describe('', () => {
    note:  there are various locations an item can be added. you can decide which flow.
 */
 
-  test('', async ({ page }) => {
+  test.skip('', async ({ page }) => {
     await page.goto("")
 
     //need to complete this,

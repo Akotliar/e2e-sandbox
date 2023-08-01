@@ -4,8 +4,6 @@ import { getComparator } from 'playwright-core/lib/utils';
 test.describe.only('Samsung Product detail', () => {
 
   test.beforeEach(async ({ page }) => {
-    // page.setViewportSize(devices['Galaxy S9+'].viewport);
-
     //specific test for this one product. Ideally there would be an array of products we could pull from and generate tests against those
     await page.goto("https://www.samsung.com/ca/smartphones/galaxy-s23/")
 
@@ -20,8 +18,6 @@ test.describe.only('Samsung Product detail', () => {
 */
 
   test('is exclusive colours section/carousel visible', async ({ page }) => {
-    // page.setViewportSize(devices['Galaxy S9+'].viewport);
-
     const colorsSection = page.locator('#special-color');
   
     const exclusiveColors = colorsSection.getByRole('heading', { name: 'Online Exclusive Colour', exact: true });
@@ -40,7 +36,6 @@ test.describe.only('Samsung Product detail', () => {
 
   test('is selecting color option updating main image preview', async ({ page }) => {
     test.slow();
-    // page.setViewportSize(devices['Galaxy S9+'].viewport);
 
     const colorsSection = page.locator('#special-color');
   

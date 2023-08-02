@@ -31,7 +31,7 @@ test.describe('Etsy shopping cart', () => {
 
     //some items have option/variation selection. 
     //adding a case to add selections before adding to cart
-    const variationSelectors = pages[1].locator('[data-selector="listing-page-variations"]').locator('select'); //.getByTestId('listing-page-cart').locator('div[class="wt-select"]');
+    const variationSelectors = pages[1].locator('[data-selector="listing-page-variations"]').locator('select');
     const variationCount = await variationSelectors.count()
     if(variationCount > 0){
       for(let index = 0; index < variationCount; index++){
@@ -40,6 +40,7 @@ test.describe('Etsy shopping cart', () => {
       }
     }
 
+    // some items have a custom text option. fill the field in if this field exists for selected item.
     const customization = pages[1].locator("textarea[id='listing-page-personalization-textarea']");
     const customizationExists = (await customization.count()) > 0
     const customizationVisible = await customization.isVisible()
@@ -49,7 +50,6 @@ test.describe('Etsy shopping cart', () => {
 
     await pages[1].waitForLoadState('load');
 
-    //click add to cart button
     const addtoCartButton = pages[1].locator('form[class="add-to-cart-form"]').locator("button[type='submit']");
     await addtoCartButton.click();
 
@@ -57,7 +57,7 @@ test.describe('Etsy shopping cart', () => {
 
     await page.waitForTimeout(2000)
 
-    // click view cart button in modal
+    // sometimes a modal appears instead of going straight to the cart.
     const viewCart = pages[1].getByRole('link', { name: 'View basket & check out' });
     const viewCartVisible = await viewCart.isVisible();
     if(viewCartVisible) await viewCart.click();
@@ -72,5 +72,5 @@ test.describe('Etsy shopping cart', () => {
 
 
 function randomSelection(min, max) { // min and max included 
-  return Math.floor(Math.random() * (max - min + 1) + min)
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }

@@ -26,7 +26,7 @@ Practice automation testing techniques and features.
 **Criteria:** When a user navigates https://www.etsy.com/. the user should be able to add items to the Favorite items list
 and the items should be added/displayed in the favourites items page. 
 
-note:  there are various locations an item can be added. you can decide which flow.
+note:  there are various locations an item can be added. you can decide which flow. (add to cart is fine as well as add to favourites requires log in)
 
 ## Exercise #7
 **Criteria:** As a https://www.razer.com/ online store customer I would like to add an Exclusive product to my shopping cart and change the quantity of the item in my cart and verify that the price is updated accordingly.

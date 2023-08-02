@@ -8,8 +8,10 @@ test.describe('Etsy shopping cart', () => {
  
     note:  there are various locations an item can be added. you can decide which flow.
  */
- // made this test be really generic and can have different flows to get to the cart even from the details page. 
- // can consider improving this by breaking it down to specific scenarios with items that have those variations of flow.
+ /* 
+  made this test be really generic and can have different flows to get to the cart even from the details page. 
+  can consider improving this by breaking it down to specific scenarios with items that have those variations of flow. 
+*/
   test('is item added to shopping cart from search list', async ({ page, context, isMobile }) => {
     if(isMobile) test.skip();
 
@@ -25,12 +27,13 @@ test.describe('Etsy shopping cart', () => {
     // slow page load in new tab.
     await page.waitForTimeout(2000);
   
-    // a new tab opens when clicking on item so we need ot get all the page contexts
-    // here so we can locate elements within the new tab
+    /*
+     a new tab opens when clicking on item so we need ot get all the page contexts
+     here so we can locate elements within the new tab
+    */
     let pages =  context.pages();
 
     //some items have option/variation selection. 
-    //adding a case to add selections before adding to cart
     const variationSelectors = pages[1].locator('[data-selector="listing-page-variations"]').locator('select');
     const variationCount = await variationSelectors.count()
     if(variationCount > 0){

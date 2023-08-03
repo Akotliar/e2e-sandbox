@@ -40,7 +40,7 @@ test.describe('Razer.com shopping cart', () => {
     const itemQuantityElement = productCartItem.locator('div[class="cart-quantity"]');
     let itemQuantity = await itemQuantityElement.textContent();
 
-    //verify remove button is showing and we should only have quantity of 1
+    //assert some conditions on initial cart state
     await expect(removeItemBtn).toBeVisible();
     await expect(addItemBtn).toBeVisible();
     await expect(reduceItemBtn).not.toBeVisible();

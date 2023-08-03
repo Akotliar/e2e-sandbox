@@ -34,11 +34,14 @@ test.describe('Razer.com shopping cart', () => {
 
     // in checkout page
     const productCartItem = page.locator('div', { has: page.locator('span', { hasText: productName!! })});
-    const removeItemBtn = productCartItem.locator('button[aria-label="Remove item from cart"]');
-    const addItemBtn = productCartItem.locator('button[aria-label="Increase quantity of item"]')
-    const reduceItemBtn = productCartItem.locator('button[aria-label="Reduce quantity of item"]')
+    const removeItemBtn = productCartItem.getByLabel('Remove item from cart');
+    const addItemBtn = productCartItem.getByLabel('Increase quantity of item');
+    const reduceItemBtn = productCartItem.getByLabel('Reduce quantity of item');
     const itemQuantityElement = productCartItem.locator('div[class="cart-quantity"]');
     let itemQuantity = await itemQuantityElement.textContent();
+    const priceElement = productCartItem.getByLabel('Product price');
+    const originalPrice = await priceElement.textContent();
+
 
     //assert some conditions on initial cart state
     await expect(removeItemBtn).toBeVisible();
@@ -48,11 +51,16 @@ test.describe('Razer.com shopping cart', () => {
 
     //update item quantity and assert updates
     await addItemBtn.click();
-    await page.waitForSelector('button[aria-label="Reduce quantity of item"]')
     itemQuantity = await itemQuantityElement.textContent();
+
+    //forced to use waitForTimeout as price is not updated immediatly. is there a better way here?
+    await page.waitForTimeout(2000)
+    const quantityUpdatedPrice = await priceElement.textContent();
+
+    await reduceItemBtn.waitFor({state: "visible"})
     await expect(removeItemBtn).not.toBeVisible();
-    await expect(reduceItemBtn).toBeVisible();
     expect(itemQuantity).toContain('2')
+    expect(originalPrice).not.toEqual(quantityUpdatedPrice)
 
   });
 });

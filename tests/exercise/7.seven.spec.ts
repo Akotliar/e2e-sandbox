@@ -9,10 +9,7 @@ test.describe('Razer.com shopping cart', () => {
   note:  an EXCLUSIVE item has an orange tag on the product image as seen in the image attached.
 */
 
-  test.only('is able to update quantity of exclusive item', async ({ page, isMobile }) => {
-
-    if(isMobile) test.skip();
-
+  test.only('is able to update quantity of exclusive item', async ({ page }) => {
     await page.goto("https://www.razer.com/store");
 
     /*

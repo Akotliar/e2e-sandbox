@@ -25,12 +25,10 @@ test.describe('Razer.com shopping cart', () => {
     await itemBuyBtn.scrollIntoViewIfNeeded();
     await itemBuyBtn.click();
 
-    await page.waitForSelector(`#mm-add-to-cart_${itemSku}`);
-
-
     // in product details
+    // wait for add to cart selector to load
+    const addToCartBtn = await page.waitForSelector(`#mm-add-to-cart_${itemSku}`);
     const productName = await page.locator('h1[class="product-name"]').textContent();
-    const addToCartBtn = page.locator(`#mm-add-to-cart_${itemSku}`);
     await addToCartBtn.scrollIntoViewIfNeeded();
     await addToCartBtn.click();
 

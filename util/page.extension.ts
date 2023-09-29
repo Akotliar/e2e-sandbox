@@ -57,6 +57,6 @@ export function ExtendedPageFixture(page: Page): ExtendedPage {
 
 
 
-class TestLocator extends Locator {
+class TestLocator  {
 
 }

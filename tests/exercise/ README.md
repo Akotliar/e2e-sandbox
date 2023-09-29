@@ -32,3 +32,6 @@ note:  an EXCLUSIVE item has an orange tag on the product image as seen in the i
 
 ## Exercise #8
 **Criteria:** as a user that visits https://androidenterprisepartners.withgoogle.com/devices/ I'm able to compare devices i've selected. Write 1 or more automation test scenarios that verifies a user can successfully compare devices.
+
+## Exercise #9
+**Criteria**: as a user when I navigate to https://www.pinterest.ca/ideas/kitchens/946506078559/ or similar page I want to be able to scroll through the more like this section. Verify when user scrolls down the list that more items load when the bottom is reached.

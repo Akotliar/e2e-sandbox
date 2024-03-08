@@ -6,7 +6,7 @@ interface Pokemon {
   sprite: any;
 }
 
-test.describe.only('Playwright Pokemon Challenge', () => {
+test.describe('Playwright Pokemon Challenge', () => {
   /**
    **Criteria**:
    Write a playwright script that calls the below API and then parse the results, grabbing 3 random Pokemon

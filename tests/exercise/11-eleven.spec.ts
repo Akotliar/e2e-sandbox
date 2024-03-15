@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe.only('Wikepedia.com > Search >', () => {
+test.describe('Wikepedia.com > Search >', () => {
   /**
   Criteria: Write an test script using Playwright that accomplishes the following tasks on Wikipedia:
         1. Search for a Term:
@@ -85,7 +85,7 @@ test.describe.only('Wikepedia.com > Search >', () => {
   });
 });
 
-test.describe.only('Wikepedia.com > Result Detail Page >', () => {
+test.describe('Wikepedia.com > Result Detail Page >', () => {
   /** 
     4. Validate Article Content:
       [/] Once on the article page, validate that the page contains a content table.
